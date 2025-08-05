@@ -166,3 +166,7 @@ a.secondary {
     filter: invert();
   }
 }
+
+.footer {
+     background-color: aquamarine;
+}
