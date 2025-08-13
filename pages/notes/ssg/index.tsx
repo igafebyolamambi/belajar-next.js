@@ -23,7 +23,7 @@ export const getStaticProps = (async() => {
     (res) => res.json(),
     )
 
-return{props: {notes}}
+return{props: {notes}, revalidate: 3}
 }) satisfies GetStaticProps<{notes: Notes}>
 
 
@@ -35,7 +35,7 @@ export default function NotesServerPage({
             {notes?.data.map((note: ListNotes) =>(
 
             <Link 
-            href={`/notes/server/${note.id}`}
+            href={`/notes/ssg/${note.id}`}
             key= {note.id} 
             className="p-4 bg-white shadow-sm rounded-lg">
                 <h1>{note.title}</h1>
