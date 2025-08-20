@@ -9,11 +9,19 @@
 }*/
 
 
-import ImgHight from '@/assets/Tulip 1.jpg'
+//import ImgHight from '@/assets/Tulip 1.jpg'
+//import HeavyComponent from "@/components/HeavyComponent"
+import dynamic from "next/dynamic"
+import { useState } from "react" 
+
+const HeavyComponent = dynamic(() => import('@/components/HeavyComponent'), { ssr: false, loading: () => <p>Loading...</p>})
 
 export default function About() {
+    const [show, setShow] = useState(false)
     return <div>
         <h1>About Page</h1>
-        <img {... ImgHight}/>
+        <button onClick={() => setShow(true)}>Show Component</button>
+        {/*<img {... ImgHight}/>*/}
+        { show && <HeavyComponent /> }
     </div>
 }
